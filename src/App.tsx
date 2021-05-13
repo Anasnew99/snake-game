@@ -48,6 +48,12 @@ function App() {
               Start New Game
           </button>
           </div>
+          <div className="attribution-container">
+              <p>
+                <span>&#169;</span> 
+                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a></span>
+              </p>
+          </div>
         </div>
       }
 
@@ -62,7 +68,12 @@ function App() {
               {!play ? 'Play' : 'Pause'}
             </button>
           </div>
-          
+          <div className="attribution-container">
+              <p>
+                <span>&#169;</span> 
+                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a></span>
+              </p>
+          </div>
         </div>
       }
 

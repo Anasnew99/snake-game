@@ -5,13 +5,21 @@
     padding: 8px;
     &-snake{
         &__food{
-            background-color: red;
+            background-image: radial-gradient(red,yellow);
+            border-radius: 50%;
+            transform: scale(1.2);
         }
         &__head{
-            background-color: yellow;
+            background-image: linear-gradient(rgba(204, 42, 42, 0.863),rgb(128, 134, 128));
+            border-radius: 6px;
+            transform: scale(1.4);
         }
         &__part{
-            background-color: green;
+            border-radius: 2px;
+            background-image: linear-gradient(rgba(248, 21, 21, 0.836),rgb(39, 44, 39));
+            &:last-child{
+                border-radius: 50%;
+            }
         }
     }
 }

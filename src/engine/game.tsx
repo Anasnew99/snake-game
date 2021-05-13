@@ -6,68 +6,83 @@ interface GameProps {
     play: boolean,
     onGameOver: (score: number) => void,
     initialGameSpeed?: number,
-    onGameClose: ()=>void
+    onGameClose: () => void
+}
+
+interface GameSounds{
+    background?: HTMLAudioElement,
+    onEat: HTMLAudioElement,
+    onGameOver: HTMLAudioElement,
+    onDirectionChange: HTMLAudioElement
 }
 
 const GRID_SIZE = 20;
 
 const Game: FC<GameProps> = (props) => {
+    const sounds = useRef<null|GameSounds>(null);
     const { onGameOver, play, initialGameSpeed, onGameClose } = props;
     const direction = useRef({ x: 1, y: 0 });
     const lastRenderTime = useRef(0);
     const speed = useRef(initialGameSpeed || 2);
     const animFrameId = useRef<null | number>(null);
-    const boardRef = useRef<null|HTMLDivElement>(null);
+    const boardRef = useRef<null | HTMLDivElement>(null);
 
     const [food, setFood] = useState(getRandomCoordinates(3, GRID_SIZE));
     const [score, setScore] = useState(0);
-    const [dimension , setDimension] = useState(0);
+    const [dimension, setDimension] = useState(0);
     const [parts, setParts] = useState<Array<Coordinates>>([{ x: 1, y: 1 }]);
 
-    useEffect(()=>{
-        const adjustBoardSize = ()=>{
-            console.log('Resizing');
-            if(boardRef.current){
-                const {height,width} = boardRef.current.getBoundingClientRect();
-                console.log(height,width);
-
-                setDimension(Math.min(height,width));
+    useEffect(() => {
+        const adjustBoardSize = () => {
+            if (boardRef.current) {
+                const { height, width } = boardRef.current.getBoundingClientRect();
+                setDimension(Math.min(height, width));
             }
         }
         adjustBoardSize();
-
-        window.addEventListener('resize',adjustBoardSize);
-        return ()=>{
-            window.removeEventListener('resize',adjustBoardSize);
+        window.addEventListener('resize', adjustBoardSize);
+        sounds.current = {
+            onEat: new Audio(require('../assets/sounds/on-eat.wav').default),
+            onDirectionChange: new Audio(require('../assets/sounds/on-dir-change.wav').default),
+            onGameOver: new Audio(require('../assets/sounds/on-game-over.wav').default)
         }
-    },[]);
+        return () => {
+            window.removeEventListener('resize', adjustBoardSize);
+        }
+    }, []);
     const onKeyPress = useCallback(
         (event: KeyboardEvent) => {
             switch (event.key) {
                 case 'ArrowUp':
                     if (direction.current.x !== 0) {
                         direction.current = { x: 0, y: -1 };
+                        sounds.current?.onDirectionChange.play();
                     }
                     break;
                 case 'ArrowDown':
                     if (direction.current.x !== 0) {
                         direction.current = { x: 0, y: 1 };
+                        sounds.current?.onDirectionChange.play();
+
                     }
                     break;
                 case 'ArrowRight':
                     if (direction.current.y !== 0) {
                         direction.current = { x: 1, y: 0 };
+                        sounds.current?.onDirectionChange.play();
+
                     }
                     break;
                 case 'ArrowLeft':
                     if (direction.current.y !== 0) {
                         direction.current = { x: -1, y: 0 };
+                        sounds.current?.onDirectionChange.play();
                     }
                     break;
                 default: return;
             }
 
-    }, []);
+        }, []);
 
 
     const moveSnake = useCallback(() => {
@@ -135,14 +150,17 @@ const Game: FC<GameProps> = (props) => {
 
     if (isCollided()) {
         onGameOver(score);
+        sounds.current?.onGameOver.play();
     }
 
 
 
     if (isFoodEaten()) {
         speed.current += .25;
+        // new Audio(require('../assets/sounds/on-eat.wav')).play();
         setFood(getRandomCoordinates(2, GRID_SIZE));
         setScore(score => score + 1);
+        sounds.current?.onEat.play();
         isFoodEaten.current = true;
         let newParts = [
             {
