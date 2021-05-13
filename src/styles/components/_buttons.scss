@@ -1,0 +1,28 @@
+.btn {
+  border: none;
+  padding: 8px 12px;
+  background: $primary-color-dark;
+  color: #eee;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all .2s;
+  &:hover{
+      transform: translateY(-2px) scale(1.2);
+      box-shadow: 0 1.2rem 2rem rgba(0,0,0,.2);
+  }
+}
+
+.rounded-btn{
+  border: none;
+  background: $primary-color-dark;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 8px 12px;
+  color: #eee;
+  font-size: 2rem;
+  transition: all .2s;
+  &:hover{
+    background: rgba($primary-color-dark, .7);  
+    box-shadow:  0 1.2rem 2rem rgba(0,0,0,.2);  
+  }
+}

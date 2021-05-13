@@ -1,0 +1,17 @@
+.board{
+    display: grid;
+    border-radius: 20px;
+    border: 2px solid #eee;
+    padding: 8px;
+    &-snake{
+        &__food{
+            background-color: red;
+        }
+        &__head{
+            background-color: yellow;
+        }
+        &__part{
+            background-color: green;
+        }
+    }
+}
