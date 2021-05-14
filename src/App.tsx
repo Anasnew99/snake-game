@@ -75,8 +75,9 @@ function App() {
           <div className="attribution-container">
               <p>
                 <span>&#169;</span> 
-                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a>. Check out <a href={'https://github.com/Anasnew99/snake-game'} target={'_blank'} rel={'noreferrer'}>Github</a></span>
+                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a>.</span>
               </p>
+              <p>Check out <a href={'https://github.com/Anasnew99/snake-game'} target={'_blank'} rel={'noreferrer'}>Github</a></p>
           </div>
         </div>
       }
