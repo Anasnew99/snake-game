@@ -8,4 +8,6 @@ After cloning the project
 
 # then run npm start to run demo server
 
+## PWA Version of the app is on this <a href="https://github.com/Anasnew99/snake-app-pwa">repository</a>
+
 
