@@ -88,3 +88,38 @@
         }
     }
 }
+
+.game-over-modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .game-over-modal__text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & > h2{
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        & > .subheading{
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        & > .score-text{
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.success-text{
+    color: rgb(18, 238, 18);
+}
+
+.failure-text{
+    color: rgb(83, 83, 1);
+}

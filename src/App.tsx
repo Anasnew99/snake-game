@@ -8,13 +8,19 @@ function App() {
   const [play, setPlay] = useState(false);
   const [prevScore, setPrevScore] = useState(0);
   const [closeGame, setCloseGame] = useState(true);
+  const [gameOverModal, setGameOverModal] = useState(false);
   const onGameOver = (score: number) => {
-    if (score > highScore) {
-      localStorage.setItem('hi-score', score.toString());
-    }
     setPrevScore(score);
-    setCloseGame(true);
+    setGameOverModal(true);
     setPlay(false);
+  }
+
+  const onClickOkOnModal = ()=>{
+    if (prevScore > highScore) {
+      localStorage.setItem('hi-score', prevScore.toString());
+    }
+    setCloseGame(true);
+    setGameOverModal(false);
   }
 
   const onGameClose = ()=>{
@@ -24,6 +30,24 @@ function App() {
 
   return (
     <div className="App">
+      <div className={"modal-container "+(gameOverModal?"modal-show":"")} >
+        <div className={'game-over-modal modal'}>
+          <div className={'game-over-modal__text'}>
+            <h2>GAME OVER</h2>
+            {
+            prevScore > highScore 
+              ?
+              <p className={'success-text subheading'}>Congratulation! you have made a high score</p>
+              :
+              <p className={'failure-text subheading'}>Bad Luck! Try next time</p>
+            }
+            <p className={'score-text'}> You Score {prevScore} points. </p>
+          </div>
+          <div className={'game-over-model__okbutton'}>
+            <button className={'btn'} onClick={onClickOkOnModal}>OK</button>
+          </div>
+        </div>
+      </div>
       {
         closeGame &&
         <div className="landing-page-container">
