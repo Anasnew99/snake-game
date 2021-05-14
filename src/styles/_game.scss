@@ -5,10 +5,14 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
+    overscroll-behavior: none;
     // justify-content: center;
     &__close{
         align-self: flex-end;
         margin-bottom: 2rem;
+        & button{
+            touch-action: none;
+        }
     }
     &__board{
         flex: 1;
@@ -17,8 +21,13 @@
         justify-content: center;
         margin-bottom: 2rem;
     }
+
+    
     &__score{
         margin-bottom: 2rem;
         font-size: 3rem;
+        @media (max-width: 576px) {
+            margin-bottom: 1rem;
+        }
     }
 }

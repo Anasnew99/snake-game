@@ -75,7 +75,7 @@ function App() {
           <div className="attribution-container">
               <p>
                 <span>&#169;</span> 
-                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a></span>
+                <span>{new Date().getFullYear()}. Project created by <a target={'_blank'} rel={'noreferrer'} href={'https://www.linkedin.com/in/anasnew99/'}> Anas Aneeque</a>. Check out <a href={'https://github.com/Anasnew99/snake-game'} target={'_blank'} rel={'noreferrer'}>Github</a></span>
               </p>
           </div>
         </div>
@@ -92,6 +92,9 @@ function App() {
               {!play ? 'Play' : 'Pause'}
             </button>
           </div>
+          <div className = {'game-container__controlIns'}>
+                <p><span color={'red'}>Controls</span> : <span color={'blue'}>Swipe</span>  anywhere on board to change snake direction or use <span color={'blue'}>arrow</span> keys to change direction</p>
+            </div>
           <div className="attribution-container">
               <p>
                 <span>&#169;</span> 

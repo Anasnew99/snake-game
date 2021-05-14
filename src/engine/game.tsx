@@ -26,6 +26,7 @@ const Game: FC<GameProps> = (props) => {
     const speed = useRef(initialGameSpeed || 2);
     const animFrameId = useRef<null | number>(null);
     const boardRef = useRef<null | HTMLDivElement>(null);
+    const currStart = useRef<null | Coordinates>(null);
 
     const [food, setFood] = useState(getRandomCoordinates(3, GRID_SIZE));
     const [score, setScore] = useState(0);
@@ -172,15 +173,59 @@ const Game: FC<GameProps> = (props) => {
         setParts(newParts);
     }
 
+    const handleTouchStart = (e: React.TouchEvent)=>{
+        if(!props.play) return;
+        if((currStart.current===null) && e.touches.length === 1){
+            e.preventDefault();
+            e.stopPropagation();
+            currStart.current = { x: e.nativeEvent.touches[0].clientX , y: e.nativeEvent.touches[0].clientY}
+        }
+    }
 
+    const handleTouchEnd = (e: React.TouchEvent)=>{
+        if(!props.play) return ;
+        if((currStart.current !== null) && e.nativeEvent.changedTouches.length === 1){
+            e.preventDefault();
+            e.stopPropagation();
+            const  finalTouchPositon = {x: e.nativeEvent.changedTouches[0].clientX, y: e.nativeEvent.changedTouches[0].clientY};
+            const diffX = finalTouchPositon.x - currStart.current.x , diffY = finalTouchPositon.y - currStart.current.y;
+            if(Math.abs(diffY) > Math.abs(diffX)){
+                if (direction.current.x !== 0) {
+                    if(diffY < 0){
+                        direction.current = { x: 0, y: -1 };
+                        sounds.current?.onDirectionChange.play();
+                    }else{
+                        direction.current = { x: 0, y: +1 };
+                        sounds.current?.onDirectionChange.play(); 
+                        
+                    }
+                    
+                }
+                
+            }else{
+                if(direction.current.y !== 0){
+                    if(diffX > 0){
+                        direction.current = { x: 1, y: 0 };
+                        sounds.current?.onDirectionChange.play();
+                    }else{
+                        direction.current = { x: -1, y: 0 };
+                        sounds.current?.onDirectionChange.play();
+                    }
+                }
+            }
+
+            currStart.current = null;
+        }
+        
+    }
 
 
     return (
-        <div className={'g-b-container'}>
+        <div className={'g-b-container'} >
             <div className={'g-b-container__close'}>
                 <button className={'close-button rounded-btn'} onClick={onGameClose}> X </button>
             </div>
-            <div className={'g-b-container__board'} ref={boardRef}>
+            <div className={'g-b-container__board'} ref={boardRef} onTouchStart = {handleTouchStart} onTouchEnd = {handleTouchEnd} >
                 <Board
                     width={dimension}
                     height={dimension}
@@ -189,6 +234,7 @@ const Game: FC<GameProps> = (props) => {
                     snakeParts={parts}
                 />
             </div>
+            
             <div className={'g-b-container__score'}>
                 <p>Score : {score}</p>
             </div>

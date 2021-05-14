@@ -1,6 +1,7 @@
 html{
     font-size: 62.5%;
     font-family: 'Texturina', sans-serif;
+    height: 100%;
 }
 *{
     padding: 0;
@@ -10,7 +11,8 @@ html{
 
 body{
     background: $primary-color-dark;
-    height: 100vh;
+    height: 100%;
+    touch-action: none;
 }
 
 #root{
