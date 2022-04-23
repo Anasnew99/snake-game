@@ -105,6 +105,10 @@
     justify-content: center;
     gap: 4px;
     align-items: center;
+    & > span {
+      display: flex;
+      gap: 4px;
+    }
     & > span:first-child {
       margin-top: 4px;
       margin-right: 8px;

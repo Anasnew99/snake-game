@@ -92,6 +92,7 @@ function App() {
                   {" "}
                   Namrata Tiwari
                 </a>
+                ,
                 <a
                   target={"_blank"}
                   rel={"noreferrer"}
@@ -100,7 +101,7 @@ function App() {
                   {" "}
                   Anas Aneeque
                 </a>
-                , , Mohd Ammar{" "}
+                , Mohd Ammar for 4th Year Final Project
               </span>
             </p>
             <p>
@@ -153,6 +154,7 @@ function App() {
                   {" "}
                   Namrata Tiwari
                 </a>
+                ,
                 <a
                   target={"_blank"}
                   rel={"noreferrer"}
@@ -161,7 +163,7 @@ function App() {
                   {" "}
                   Anas Aneeque
                 </a>
-                , , Mohd Ammar{" "}
+                , Mohd Ammar for 4th Year Final Project
               </span>
             </p>
           </div>
