@@ -87,21 +87,20 @@ function App() {
                 <a
                   target={"_blank"}
                   rel={"noreferrer"}
-                  href={"https://www.linkedin.com/in/anasnew99/"}
-                >
-                  {" "}
-                  Anas Aneeque
-                </a>
-                ,{" "}
-                <a
-                  target={"_blank"}
-                  rel={"noreferrer"}
                   href={"https://www.linkedin.com/in/namrata-tiwari-7ba137234/"}
                 >
                   {" "}
                   Namrata Tiwari
                 </a>
-                , Mohd Ammar{" "}
+                <a
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  href={"https://www.linkedin.com/in/anasnew99/"}
+                >
+                  {" "}
+                  Anas Aneeque
+                </a>
+                , , Mohd Ammar{" "}
               </span>
             </p>
             <p>
@@ -149,21 +148,20 @@ function App() {
                 <a
                   target={"_blank"}
                   rel={"noreferrer"}
-                  href={"https://www.linkedin.com/in/anasnew99/"}
-                >
-                  {" "}
-                  Anas Aneeque
-                </a>
-                ,{" "}
-                <a
-                  target={"_blank"}
-                  rel={"noreferrer"}
                   href={"https://www.linkedin.com/in/namrata-tiwari-7ba137234/"}
                 >
                   {" "}
                   Namrata Tiwari
                 </a>
-                , Mohd Ammar{" "}
+                <a
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  href={"https://www.linkedin.com/in/anasnew99/"}
+                >
+                  {" "}
+                  Anas Aneeque
+                </a>
+                , , Mohd Ammar{" "}
               </span>
             </p>
           </div>
